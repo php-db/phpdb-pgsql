@@ -35,9 +35,6 @@ class Connection extends AbstractConnection implements DriverAwareInterface
 {
     protected DriverInterface|Driver $driver;
 
-    /** @var ?PgSqlConnection */
-    protected $resource;
-
     /** PostgreSQL connection type */
     protected ?int $type = null;
 
@@ -64,7 +61,7 @@ class Connection extends AbstractConnection implements DriverAwareInterface
             $this->connect();
         }
 
-        pg_query($this->resource, 'BEGIN');
+        pg_query($this->getResource(), 'BEGIN');
         $this->inTransaction = true;
 
         return $this;
@@ -84,7 +81,7 @@ class Connection extends AbstractConnection implements DriverAwareInterface
             return $this; // We ignore attempts to commit non-existing transaction
         }
 
-        pg_query($this->resource, 'COMMIT');
+        pg_query($this->getResource(), 'COMMIT');
         $this->inTransaction = false;
 
         return $this;
@@ -103,13 +100,16 @@ class Connection extends AbstractConnection implements DriverAwareInterface
         }
 
         $connection = $this->getConnectionString();
-        set_error_handler(static function ($number, $string) {
-            throw new Exception\RuntimeException(
-                self::class . '::connect: Unable to connect to database',
-                $number,
-                new Exception\ErrorException($string, $number),
-            );
-        });
+        set_error_handler(
+            /** @throws Exception\RuntimeException */
+            static function ($number, $string) {
+                throw new Exception\RuntimeException(
+                    self::class . '::connect: Unable to connect to database',
+                    $number,
+                    new Exception\ErrorException($string, $number),
+                );
+            },
+        );
         try {
             $this->resource = pg_connect($connection);
         } finally {
@@ -142,7 +142,7 @@ class Connection extends AbstractConnection implements DriverAwareInterface
     #[Override]
     public function disconnect(): static
     {
-        pg_close($this->resource);
+        pg_close($this->getResource());
         $this->resource = null;
         return $this;
     }
@@ -161,13 +161,13 @@ class Connection extends AbstractConnection implements DriverAwareInterface
 
         $this->profiler?->profilerStart($sql);
 
-        $resultResource = pg_query($this->resource, $sql);
+        $resultResource = pg_query($this->getResource(), $sql);
 
         $this->profiler?->profilerFinish();
 
         // if the returnValue is something other than a pg result resource, bypass wrapping it
         if (false === $resultResource) {
-            throw new Exception\InvalidQueryException(pg_last_error($this->resource));
+            throw new Exception\InvalidQueryException(pg_last_error($this->getResource()));
         }
 
         /** @phpstan-ignore argument.type */
@@ -184,7 +184,7 @@ class Connection extends AbstractConnection implements DriverAwareInterface
             $this->connect();
         }
 
-        $result = pg_query($this->resource, 'SELECT CURRENT_SCHEMA AS "currentschema"');
+        $result = pg_query($this->getResource(), 'SELECT CURRENT_SCHEMA AS "currentschema"');
         if (false === $result) {
             return false;
         }
@@ -202,7 +202,7 @@ class Connection extends AbstractConnection implements DriverAwareInterface
             return null;
         }
         $result = pg_query(
-            $this->resource,
+            $this->getResource(),
             'SELECT CURRVAL(\'' . str_replace('\'', '\\\'', $name) . '\') as "currval"',
         );
 
@@ -213,6 +213,7 @@ class Connection extends AbstractConnection implements DriverAwareInterface
     #[Override]
     public function getResource(): ?PgSqlConnection
     {
+        /** @var PgSqlConnection|null */
         return $this->resource;
     }
 
@@ -239,7 +240,7 @@ class Connection extends AbstractConnection implements DriverAwareInterface
             throw new Exception\RuntimeException('Must call beginTransaction() before you can rollback');
         }
 
-        pg_query($this->resource, 'ROLLBACK');
+        pg_query($this->getResource(), 'ROLLBACK');
         $this->inTransaction = false;
 
         return $this;

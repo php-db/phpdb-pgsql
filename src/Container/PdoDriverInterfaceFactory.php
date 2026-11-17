@@ -35,7 +35,7 @@ final class PdoDriverInterfaceFactory
         $connectionParameters = $options['connection']
             ?? $config[$requestedName]['connection']
             ?? $config[AdapterInterface::class]['adapters'][$requestedName]['connection']
-                ?? null;
+            ?? null;
         $connection = $container->build(Pdo\Connection::class, ['connection' => $connectionParameters]);
         return new Pdo\Driver(
             connection: $connection,

@@ -71,6 +71,7 @@ class Source extends AbstractSource
         /** @var ResultSet\ResultSetInterface&ResultSet\ResultSet $results */
         $results = $this->adapter->query($sql, AdapterInterface::QUERY_MODE_EXECUTE);
         $columns = [];
+        /** @var array{column_name: string, ordinal_position: int|string, column_default: ?string, is_nullable: string, data_type: string, character_maximum_length: int|string|null, character_octet_length: int|string|null, numeric_precision: int|string|null, numeric_scale: int|string|null} $row */
         foreach ($results->toArray() as $row) {
             $columns[$row['column_name']] = [
                 'ordinal_position'         => $row['ordinal_position'],
@@ -225,7 +226,7 @@ class Source extends AbstractSource
         $isFK        = false;
         foreach ($results->toArray() as $row) {
             if ($row['constraint_name'] !== $name) {
-                $name               = $row['constraint_name'];
+                $name               = (string) $row['constraint_name'];
                 $constraints[$name] = [
                     'constraint_name' => $name,
                     'constraint_type' => $row['constraint_type'],
@@ -246,9 +247,9 @@ class Source extends AbstractSource
                     $constraints[$name]['delete_rule']             = $row['delete_rule'];
                 }
             }
-            $constraints[$name]['columns'][] = $row['column_name'];
+            $constraints[(string) $name]['columns'][] = $row['column_name'];
             if ($isFK) {
-                $constraints[$name]['referenced_columns'][] = $row['referenced_column_name'];
+                $constraints[(string) $name]['referenced_columns'][] = $row['referenced_column_name'];
             }
         }
 
@@ -283,6 +284,7 @@ class Source extends AbstractSource
         $results = $this->adapter->query($sql, AdapterInterface::QUERY_MODE_EXECUTE);
 
         $schemas = [];
+        /** @var array{schema_name: string} $row */
         foreach ($results->toArray() as $row) {
             $schemas[] = $row['schema_name'];
         }
@@ -346,6 +348,7 @@ class Source extends AbstractSource
         $results = $this->adapter->query($sql, AdapterInterface::QUERY_MODE_EXECUTE);
 
         $tables = [];
+        /** @var array{table_name: string, table_type: string, view_definition: ?string, check_option: ?string, is_updatable: ?string} $row */
         foreach ($results->toArray() as $row) {
             $tables[$row['table_name']] = [
                 'table_type'      => $row['table_type'],
@@ -423,7 +426,7 @@ class Source extends AbstractSource
             if (null !== $row['created']) {
                 $row['created'] = new DateTime($row['created']);
             }
-            $data[$row['trigger_name']] = $row;
+            $data[(string) $row['trigger_name']] = $row;
         }
 
         $this->data['triggers'][$schema] = $data;
