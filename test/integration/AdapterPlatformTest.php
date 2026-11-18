@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace PhpDbIntegrationTest\Pgsql;
 
-use PhpDb\Adapter\Exception\VunerablePlatformQuoteException;
+use PhpDb\Adapter\Exception\RuntimeException;
 use PhpDb\Pgsql\AdapterPlatform;
 use PhpDbTestAsset\Pgsql\SetupTrait;
 use PHPUnit\Framework\Attributes\CoversClass;
@@ -23,8 +23,7 @@ final class AdapterPlatformTest extends TestCase
     {
         $adapter = $this->getAdapter(self::PDO_ADAPTER);
         $pgsql   = $adapter->getPlatform();
-        //$this->expectException(VunerablePlatformQuoteException::class);
-        $value = $pgsql->quoteValue('value');
+        $value   = $pgsql->quoteValue('value');
         static::assertSame('\'value\'', $value);
     }
 
@@ -33,7 +32,8 @@ final class AdapterPlatformTest extends TestCase
     {
         $adapter = $this->getAdapter(self::NATIVE_ADAPTER);
         $pgsql   = $adapter->getPlatform();
-        $this->expectException(VunerablePlatformQuoteException::class);
+        $this->expectException(RuntimeException::class);
+        $this->expectExceptionMessage('without extension/driver support can introduce security vulnerabilities');
         $value = $pgsql->quoteValue('value');
         static::assertSame('\'value\'', $value);
 

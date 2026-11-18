@@ -160,7 +160,7 @@ count = 1
 file = "src/Metadata/Source.php"
 code = "no-else-clause"
 message = "Avoid `else` clauses."
-count = 4
+count = 3
 
 [[issues]]
 file = "src/Metadata/Source.php"

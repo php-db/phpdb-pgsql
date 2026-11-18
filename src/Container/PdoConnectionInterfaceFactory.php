@@ -39,11 +39,11 @@ final class PdoConnectionInterfaceFactory
         $connectionInfo = $options['connection']
             ?? $config[$requestedName]['connection']
             ?? $config[AdapterInterface::class]['adapters'][$requestedName]['connection']
-                ?? null;
+            ?? null;
         if (null === $connectionInfo || ! is_array($connectionInfo) || [] === $connectionInfo) {
             throw new InvalidConnectionParametersException(
                 'Connection configuration must be an array of parameters',
-                $connectionInfo,
+                is_array($connectionInfo) ? $connectionInfo : [],
             );
         }
         return new Pdo\Connection($connectionInfo);

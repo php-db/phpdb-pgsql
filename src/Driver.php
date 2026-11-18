@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace PhpDb\Pgsql;
 
 use Override;
+use PgSql\Connection as PgSqlConnection;
 use PgSql\Result as PgSqlResult;
 use PhpDb\Adapter\Driver\ConnectionInterface;
 use PhpDb\Adapter\Driver\DriverAwareInterface;
@@ -91,7 +92,14 @@ class Driver implements DriverInterface, ProfilerAwareInterface
             $this->connection->connect();
         }
 
-        $statement->initialize($this->connection->getResource());
+        $resource = $this->connection->getResource();
+        if (! $resource instanceof PgSqlConnection) {
+            throw new Exception\RuntimeException(
+                'Unable to create a statement without a PostgreSQL connection resource',
+            );
+        }
+
+        $statement->initialize($resource);
 
         return $statement;
     }

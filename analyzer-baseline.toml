@@ -98,32 +98,14 @@ count = 1
 
 [[issues]]
 file = "src/Connection.php"
-code = "impossible-condition"
-message = "This condition (type `false`) will always evaluate to false."
-count = 1
-
-[[issues]]
-file = "src/Connection.php"
 code = "imprecise-type"
 message = "Type `array` in parameter `$connectionInfo` is imprecise, equivalent to `array<array-key, mixed>`."
 count = 1
 
 [[issues]]
 file = "src/Connection.php"
-code = "incompatible-property-type"
-message = 'Property `PhpDb\Pgsql\Connection::$resource` has an incompatible type declaration from docblock.'
-count = 1
-
-[[issues]]
-file = "src/Connection.php"
 code = "invalid-argument"
 message = 'Invalid argument type for argument #1 of `PhpDb\Adapter\Driver\DriverInterface::createResult`: expected `resource`, but found `PgSql\Result`.'
-count = 1
-
-[[issues]]
-file = "src/Connection.php"
-code = "invalid-property-assignment-value"
-message = 'Invalid type for property `$resource`: expected `PgSql\Connection|null`, but got `PgSql\Connection|false`.'
 count = 1
 
 [[issues]]
@@ -194,18 +176,6 @@ count = 6
 
 [[issues]]
 file = "src/Connection.php"
-code = "possibly-null-argument"
-message = 'Argument #1 of function `pg_set_client_encoding` is possibly `null`, but parameter type `PgSql\Connection|string` does not accept it.'
-count = 1
-
-[[issues]]
-file = "src/Connection.php"
-code = "redundant-comparison"
-message = "Redundant `===` comparison: left-hand side is never identical to right-hand side."
-count = 1
-
-[[issues]]
-file = "src/Connection.php"
 code = "unhandled-thrown-type"
 message = 'Potentially unhandled exception `PhpDb\Adapter\Exception\RuntimeException` in `PhpDb\Pgsql\Connection::beginTransaction`.'
 count = 1
@@ -232,12 +202,6 @@ count = 1
 file = "src/Connection.php"
 code = "unhandled-thrown-type"
 message = 'Potentially unhandled exception `PhpDb\Adapter\Exception\RuntimeException` in `PhpDb\Pgsql\Connection::rollback`.'
-count = 1
-
-[[issues]]
-file = "src/Connection.php"
-code = "unhandled-thrown-type"
-message = 'Potentially unhandled exception `PhpDb\Adapter\Exception\RuntimeException` in `{closure:src/Connection.php:106:27}`.'
 count = 1
 
 [[issues]]
@@ -506,12 +470,6 @@ count = 1
 
 [[issues]]
 file = "src/Driver.php"
-code = "possibly-null-argument"
-message = 'Argument #1 of method `PhpDb\Pgsql\Statement::initialize` is possibly `null`, but parameter type `PgSql\Connection` does not accept it.'
-count = 1
-
-[[issues]]
-file = "src/Driver.php"
 code = "redundant-condition"
 message = "This condition (type `true`) will always evaluate to true."
 count = 2
@@ -556,13 +514,13 @@ count = 1
 file = "src/Metadata/Source.php"
 code = "mixed-array-access"
 message = "Unsafe array access on type `mixed`."
-count = 23
+count = 8
 
 [[issues]]
 file = "src/Metadata/Source.php"
 code = "mixed-assignment"
 message = "Assigning `mixed` type to a variable may lead to unexpected behavior."
-count = 6
+count = 2
 
 [[issues]]
 file = "src/Metadata/Source.php"
@@ -590,33 +548,21 @@ count = 1
 
 [[issues]]
 file = "src/Metadata/Source.php"
-code = "property-type-coercion"
-message = "A value of a less specific type `array{'columns': non-empty-array<string, array<string, array<array-key, array{'character_maximum_length': mixed, 'character_octet_length': mixed, 'column_default': mixed, 'data_type': mixed, 'erratas': array<string, mixed>, 'is_nullable': bool|null, 'numeric_precision': mixed, 'numeric_scale': mixed, 'numeric_unsigned': bool|null, 'ordinal_position': mixed}>>>, 'constraint_keys'?: array<string, list<array{'column_name': string, 'constraint_name': string, 'ordinal_position': int, 'table_name': string}>>, 'constraint_references'?: array<string, list<array{'constraint_name': string, 'delete_rule': string, 'referenced_column_name': string, 'referenced_table_name': string, 'update_rule': string}>>, 'constraints'?: array<string, array<string, array<string, array{'check_clause'?: string, 'columns'?: list<string>, 'constraint_type'?: string, 'delete_rule'?: string, 'match_option'?: string, 'referenced_columns'?: list<string>, 'referenced_table_name'?: string, 'referenced_table_schema'?: string, 'update_rule'?: string}>>>, 'schemas'?: list<string>, 'table_names'?: array<string, array<string, array{'check_option'?: null|string, 'is_updatable'?: bool|null, 'table_type': string, 'view_definition'?: null|string}>>, 'triggers'?: array<string, array<string, array{'action_condition': null|string, 'action_order': string, 'action_orientation': string, 'action_reference_new_row': string, 'action_reference_new_table': null|string, 'action_reference_old_row': string, 'action_reference_old_table': null|string, 'action_statement': string, 'action_timing': string, 'created': DateTime|null, 'event_manipulation': string, 'event_object_catalog': string, 'event_object_schema': string, 'event_object_table': string}>>}` is being assigned to property `$data` (array{'columns'?: array<string, array<string, array<string, array{'character_maximum_length': int|null|string, 'character_octet_length': int|null|string, 'column_default': bool|int|null|string, 'data_type': string, 'erratas': array<string, mixed>, 'is_nullable': bool|null, 'numeric_precision': int|null|string, 'numeric_scale': int|null|string, 'numeric_unsigned': bool|null, 'ordinal_position': int|null|string}>>>, 'constraint_keys'?: array<string, list<array{'column_name': string, 'constraint_name': string, 'ordinal_position': int, 'table_name': string}>>, 'constraint_references'?: array<string, list<array{'constraint_name': string, 'delete_rule': string, 'referenced_column_name': string, 'referenced_table_name': string, 'update_rule': string}>>, 'constraints'?: array<string, array<string, array<string, array{'check_clause'?: string, 'columns'?: list<string>, 'constraint_type'?: string, 'delete_rule'?: string, 'match_option'?: string, 'referenced_columns'?: list<string>, 'referenced_table_name'?: string, 'referenced_table_schema'?: string, 'update_rule'?: string}>>>, 'schemas'?: list<string>, 'table_names'?: array<string, array<string, array{'check_option'?: null|string, 'is_updatable'?: bool|null, 'table_type': string, 'view_definition'?: null|string}>>, 'triggers'?: array<string, array<string, array{'action_condition': null|string, 'action_order': string, 'action_orientation': string, 'action_reference_new_row': string, 'action_reference_new_table': null|string, 'action_reference_old_row': string, 'action_reference_old_table': null|string, 'action_statement': string, 'action_timing': string, 'created': DateTime|null, 'event_manipulation': string, 'event_object_catalog': string, 'event_object_schema': string, 'event_object_table': string}>>})."
-count = 1
-
-[[issues]]
-file = "src/Metadata/Source.php"
-code = "property-type-coercion"
-message = "A value of a less specific type `array{'columns'?: array<string, array<string, array<string, array{'character_maximum_length': int|null|string, 'character_octet_length': int|null|string, 'column_default': bool|int|null|string, 'data_type': string, 'erratas': array<string, mixed>, 'is_nullable': bool|null, 'numeric_precision': int|null|string, 'numeric_scale': int|null|string, 'numeric_unsigned': bool|null, 'ordinal_position': int|null|string}>>>, 'constraint_keys'?: array<string, list<array{'column_name': string, 'constraint_name': string, 'ordinal_position': int, 'table_name': string}>>, 'constraint_references'?: array<string, list<array{'constraint_name': string, 'delete_rule': string, 'referenced_column_name': string, 'referenced_table_name': string, 'update_rule': string}>>, 'constraints': non-empty-array<string, array<string, array<array-key, array{'check_clause'?: mixed, 'columns'?: list<mixed>, 'constraint_name'?: mixed, 'constraint_type'?: mixed, 'delete_rule'?: mixed, 'match_option'?: mixed, 'referenced_columns'?: list<mixed>, 'referenced_table_name'?: mixed, 'referenced_table_schema'?: mixed, 'table_name'?: mixed, 'update_rule'?: mixed}>>>, 'schemas'?: list<string>, 'table_names'?: array<string, array<string, array{'check_option'?: null|string, 'is_updatable'?: bool|null, 'table_type': string, 'view_definition'?: null|string}>>, 'triggers'?: array<string, array<string, array{'action_condition': null|string, 'action_order': string, 'action_orientation': string, 'action_reference_new_row': string, 'action_reference_new_table': null|string, 'action_reference_old_row': string, 'action_reference_old_table': null|string, 'action_statement': string, 'action_timing': string, 'created': DateTime|null, 'event_manipulation': string, 'event_object_catalog': string, 'event_object_schema': string, 'event_object_table': string}>>}` is being assigned to property `$data` (array{'columns'?: array<string, array<string, array<string, array{'character_maximum_length': int|null|string, 'character_octet_length': int|null|string, 'column_default': bool|int|null|string, 'data_type': string, 'erratas': array<string, mixed>, 'is_nullable': bool|null, 'numeric_precision': int|null|string, 'numeric_scale': int|null|string, 'numeric_unsigned': bool|null, 'ordinal_position': int|null|string}>>>, 'constraint_keys'?: array<string, list<array{'column_name': string, 'constraint_name': string, 'ordinal_position': int, 'table_name': string}>>, 'constraint_references'?: array<string, list<array{'constraint_name': string, 'delete_rule': string, 'referenced_column_name': string, 'referenced_table_name': string, 'update_rule': string}>>, 'constraints'?: array<string, array<string, array<string, array{'check_clause'?: string, 'columns'?: list<string>, 'constraint_type'?: string, 'delete_rule'?: string, 'match_option'?: string, 'referenced_columns'?: list<string>, 'referenced_table_name'?: string, 'referenced_table_schema'?: string, 'update_rule'?: string}>>>, 'schemas'?: list<string>, 'table_names'?: array<string, array<string, array{'check_option'?: null|string, 'is_updatable'?: bool|null, 'table_type': string, 'view_definition'?: null|string}>>, 'triggers'?: array<string, array<string, array{'action_condition': null|string, 'action_order': string, 'action_orientation': string, 'action_reference_new_row': string, 'action_reference_new_table': null|string, 'action_reference_old_row': string, 'action_reference_old_table': null|string, 'action_statement': string, 'action_timing': string, 'created': DateTime|null, 'event_manipulation': string, 'event_object_catalog': string, 'event_object_schema': string, 'event_object_table': string}>>})."
-count = 1
-
-[[issues]]
-file = "src/Metadata/Source.php"
-code = "property-type-coercion"
-message = "A value of a less specific type `array{'columns'?: array<string, array<string, array<string, array{'character_maximum_length': int|null|string, 'character_octet_length': int|null|string, 'column_default': bool|int|null|string, 'data_type': string, 'erratas': array<string, mixed>, 'is_nullable': bool|null, 'numeric_precision': int|null|string, 'numeric_scale': int|null|string, 'numeric_unsigned': bool|null, 'ordinal_position': int|null|string}>>>, 'constraint_keys'?: array<string, list<array{'column_name': string, 'constraint_name': string, 'ordinal_position': int, 'table_name': string}>>, 'constraint_references'?: array<string, list<array{'constraint_name': string, 'delete_rule': string, 'referenced_column_name': string, 'referenced_table_name': string, 'update_rule': string}>>, 'constraints'?: array<string, array<string, array<string, array{'check_clause'?: string, 'columns'?: list<string>, 'constraint_type'?: string, 'delete_rule'?: string, 'match_option'?: string, 'referenced_columns'?: list<string>, 'referenced_table_name'?: string, 'referenced_table_schema'?: string, 'update_rule'?: string}>>>, 'schemas'?: list<string>, 'table_names': non-empty-array<string, array<array-key, array{'check_option'?: mixed, 'is_updatable'?: bool|null, 'table_type': mixed, 'view_definition'?: mixed}>>, 'triggers'?: array<string, array<string, array{'action_condition': null|string, 'action_order': string, 'action_orientation': string, 'action_reference_new_row': string, 'action_reference_new_table': null|string, 'action_reference_old_row': string, 'action_reference_old_table': null|string, 'action_statement': string, 'action_timing': string, 'created': DateTime|null, 'event_manipulation': string, 'event_object_catalog': string, 'event_object_schema': string, 'event_object_table': string}>>}` is being assigned to property `$data` (array{'columns'?: array<string, array<string, array<string, array{'character_maximum_length': int|null|string, 'character_octet_length': int|null|string, 'column_default': bool|int|null|string, 'data_type': string, 'erratas': array<string, mixed>, 'is_nullable': bool|null, 'numeric_precision': int|null|string, 'numeric_scale': int|null|string, 'numeric_unsigned': bool|null, 'ordinal_position': int|null|string}>>>, 'constraint_keys'?: array<string, list<array{'column_name': string, 'constraint_name': string, 'ordinal_position': int, 'table_name': string}>>, 'constraint_references'?: array<string, list<array{'constraint_name': string, 'delete_rule': string, 'referenced_column_name': string, 'referenced_table_name': string, 'update_rule': string}>>, 'constraints'?: array<string, array<string, array<string, array{'check_clause'?: string, 'columns'?: list<string>, 'constraint_type'?: string, 'delete_rule'?: string, 'match_option'?: string, 'referenced_columns'?: list<string>, 'referenced_table_name'?: string, 'referenced_table_schema'?: string, 'update_rule'?: string}>>>, 'schemas'?: list<string>, 'table_names'?: array<string, array<string, array{'check_option'?: null|string, 'is_updatable'?: bool|null, 'table_type': string, 'view_definition'?: null|string}>>, 'triggers'?: array<string, array<string, array{'action_condition': null|string, 'action_order': string, 'action_orientation': string, 'action_reference_new_row': string, 'action_reference_new_table': null|string, 'action_reference_old_row': string, 'action_reference_old_table': null|string, 'action_statement': string, 'action_timing': string, 'created': DateTime|null, 'event_manipulation': string, 'event_object_catalog': string, 'event_object_schema': string, 'event_object_table': string}>>})."
-count = 1
-
-[[issues]]
-file = "src/Metadata/Source.php"
-code = "property-type-coercion"
-message = "A value of a less specific type `array{'columns'?: array<string, array<string, array<string, array{'character_maximum_length': int|null|string, 'character_octet_length': int|null|string, 'column_default': bool|int|null|string, 'data_type': string, 'erratas': array<string, mixed>, 'is_nullable': bool|null, 'numeric_precision': int|null|string, 'numeric_scale': int|null|string, 'numeric_unsigned': bool|null, 'ordinal_position': int|null|string}>>>, 'constraint_keys'?: array<string, list<array{'column_name': string, 'constraint_name': string, 'ordinal_position': int, 'table_name': string}>>, 'constraint_references'?: array<string, list<array{'constraint_name': string, 'delete_rule': string, 'referenced_column_name': string, 'referenced_table_name': string, 'update_rule': string}>>, 'constraints'?: array<string, array<string, array<string, array{'check_clause'?: string, 'columns'?: list<string>, 'constraint_type'?: string, 'delete_rule'?: string, 'match_option'?: string, 'referenced_columns'?: list<string>, 'referenced_table_name'?: string, 'referenced_table_schema'?: string, 'update_rule'?: string}>>>, 'schemas'?: list<string>, 'table_names'?: array<string, array<string, array{'check_option'?: null|string, 'is_updatable'?: bool|null, 'table_type': string, 'view_definition'?: null|string}>>, 'triggers': non-empty-array<string, array<array-key, array{'action_condition': mixed, 'action_order': mixed, 'action_orientation': mixed, 'action_reference_new_row': string, 'action_reference_new_table': mixed, 'action_reference_old_row': string, 'action_reference_old_table': mixed, 'action_statement': mixed, 'action_timing': mixed, 'created': DateTime|null, 'event_manipulation': mixed, 'event_object_catalog': mixed, 'event_object_schema': mixed, 'event_object_table': mixed}|array{'action_reference_new_row': string('NEW'), 'action_reference_old_row': string('OLD'), 'created': DateTime|null, ...<string, mixed>}>>}` is being assigned to property `$data` (array{'columns'?: array<string, array<string, array<string, array{'character_maximum_length': int|null|string, 'character_octet_length': int|null|string, 'column_default': bool|int|null|string, 'data_type': string, 'erratas': array<string, mixed>, 'is_nullable': bool|null, 'numeric_precision': int|null|string, 'numeric_scale': int|null|string, 'numeric_unsigned': bool|null, 'ordinal_position': int|null|string}>>>, 'constraint_keys'?: array<string, list<array{'column_name': string, 'constraint_name': string, 'ordinal_position': int, 'table_name': string}>>, 'constraint_references'?: array<string, list<array{'constraint_name': string, 'delete_rule': string, 'referenced_column_name': string, 'referenced_table_name': string, 'update_rule': string}>>, 'constraints'?: array<string, array<string, array<string, array{'check_clause'?: string, 'columns'?: list<string>, 'constraint_type'?: string, 'delete_rule'?: string, 'match_option'?: string, 'referenced_columns'?: list<string>, 'referenced_table_name'?: string, 'referenced_table_schema'?: string, 'update_rule'?: string}>>>, 'schemas'?: list<string>, 'table_names'?: array<string, array<string, array{'check_option'?: null|string, 'is_updatable'?: bool|null, 'table_type': string, 'view_definition'?: null|string}>>, 'triggers'?: array<string, array<string, array{'action_condition': null|string, 'action_order': string, 'action_orientation': string, 'action_reference_new_row': string, 'action_reference_new_table': null|string, 'action_reference_old_row': string, 'action_reference_old_table': null|string, 'action_statement': string, 'action_timing': string, 'created': DateTime|null, 'event_manipulation': string, 'event_object_catalog': string, 'event_object_schema': string, 'event_object_table': string}>>})."
-count = 1
-
-[[issues]]
-file = "src/Metadata/Source.php"
 code = "reference-constraint-violation"
 message = "Invalid assignment to by-reference parameter `$c`."
-count = 7
+count = 5
+
+[[issues]]
+file = "src/Metadata/Source.php"
+code = "mixed-property-type-coercion"
+message = "A value with a less specific type `array{'columns'?: array<string, array<string, array<string, array{'character_maximum_length': int|null|string, 'character_octet_length': int|null|string, 'column_default': bool|int|null|string, 'data_type': string, 'erratas': array<string, mixed>, 'is_nullable': bool|null, 'numeric_precision': int|null|string, 'numeric_scale': int|null|string, 'numeric_unsigned': bool|null, 'ordinal_position': int|null|string}>>>, 'constraint_keys'?: array<string, list<array{'column_name': string, 'constraint_name': string, 'ordinal_position': int, 'table_name': string}>>, 'constraint_references'?: array<string, list<array{'constraint_name': string, 'delete_rule': string, 'referenced_column_name': string, 'referenced_table_name': string, 'update_rule': string}>>, 'constraints': non-empty-array<string, array<string, array<string, array{'check_clause'?: mixed, 'columns'?: list<mixed>, 'constraint_name'?: string, 'constraint_type'?: mixed, 'delete_rule'?: mixed, 'match_option'?: mixed, 'referenced_columns'?: list<mixed>, 'referenced_table_name'?: mixed, 'referenced_table_schema'?: mixed, 'table_name'?: mixed, 'update_rule'?: mixed}>>>, 'schemas'?: list<string>, 'table_names'?: array<string, array<string, array{'check_option'?: null|string, 'is_updatable'?: bool|null, 'table_type': string, 'view_definition'?: null|string}>>, 'triggers'?: array<string, array<string, array{'action_condition': null|string, 'action_order': string, 'action_orientation': string, 'action_reference_new_row': string, 'action_reference_new_table': null|string, 'action_reference_old_row': string, 'action_reference_old_table': null|string, 'action_statement': string, 'action_timing': string, 'created': DateTime|null, 'event_manipulation': string, 'event_object_catalog': string, 'event_object_schema': string, 'event_object_table': string}>>}` is being assigned to property `$data` (array{'columns'?: array<string, array<string, array<string, array{'character_maximum_length': int|null|string, 'character_octet_length': int|null|string, 'column_default': bool|int|null|string, 'data_type': string, 'erratas': array<string, mixed>, 'is_nullable': bool|null, 'numeric_precision': int|null|string, 'numeric_scale': int|null|string, 'numeric_unsigned': bool|null, 'ordinal_position': int|null|string}>>>, 'constraint_keys'?: array<string, list<array{'column_name': string, 'constraint_name': string, 'ordinal_position': int, 'table_name': string}>>, 'constraint_references'?: array<string, list<array{'constraint_name': string, 'delete_rule': string, 'referenced_column_name': string, 'referenced_table_name': string, 'update_rule': string}>>, 'constraints'?: array<string, array<string, array<string, array{'check_clause'?: string, 'columns'?: list<string>, 'constraint_type'?: string, 'delete_rule'?: string, 'match_option'?: string, 'referenced_columns'?: list<string>, 'referenced_table_name'?: string, 'referenced_table_schema'?: string, 'update_rule'?: string}>>>, 'schemas'?: list<string>, 'table_names'?: array<string, array<string, array{'check_option'?: null|string, 'is_updatable'?: bool|null, 'table_type': string, 'view_definition'?: null|string}>>, 'triggers'?: array<string, array<string, array{'action_condition': null|string, 'action_order': string, 'action_orientation': string, 'action_reference_new_row': string, 'action_reference_new_table': null|string, 'action_reference_old_row': string, 'action_reference_old_table': null|string, 'action_statement': string, 'action_timing': string, 'created': DateTime|null, 'event_manipulation': string, 'event_object_catalog': string, 'event_object_schema': string, 'event_object_table': string}>>})."
+count = 1
+
+[[issues]]
+file = "src/Metadata/Source.php"
+code = "mixed-property-type-coercion"
+message = "A value with a less specific type `array{'columns'?: array<string, array<string, array<string, array{'character_maximum_length': int|null|string, 'character_octet_length': int|null|string, 'column_default': bool|int|null|string, 'data_type': string, 'erratas': array<string, mixed>, 'is_nullable': bool|null, 'numeric_precision': int|null|string, 'numeric_scale': int|null|string, 'numeric_unsigned': bool|null, 'ordinal_position': int|null|string}>>>, 'constraint_keys'?: array<string, list<array{'column_name': string, 'constraint_name': string, 'ordinal_position': int, 'table_name': string}>>, 'constraint_references'?: array<string, list<array{'constraint_name': string, 'delete_rule': string, 'referenced_column_name': string, 'referenced_table_name': string, 'update_rule': string}>>, 'constraints'?: array<string, array<string, array<string, array{'check_clause'?: string, 'columns'?: list<string>, 'constraint_type'?: string, 'delete_rule'?: string, 'match_option'?: string, 'referenced_columns'?: list<string>, 'referenced_table_name'?: string, 'referenced_table_schema'?: string, 'update_rule'?: string}>>>, 'schemas'?: list<string>, 'table_names'?: array<string, array<string, array{'check_option'?: null|string, 'is_updatable'?: bool|null, 'table_type': string, 'view_definition'?: null|string}>>, 'triggers': non-empty-array<string, array<string, array{'action_condition': mixed, 'action_order': mixed, 'action_orientation': mixed, 'action_reference_new_row': string, 'action_reference_new_table': mixed, 'action_reference_old_row': string, 'action_reference_old_table': mixed, 'action_statement': mixed, 'action_timing': mixed, 'created': DateTime|null, 'event_manipulation': mixed, 'event_object_catalog': mixed, 'event_object_schema': mixed, 'event_object_table': mixed}|array{'action_reference_new_row': string('NEW'), 'action_reference_old_row': string('OLD'), 'created': DateTime|null, ...<string, mixed>}>>}` is being assigned to property `$data` (array{'columns'?: array<string, array<string, array<string, array{'character_maximum_length': int|null|string, 'character_octet_length': int|null|string, 'column_default': bool|int|null|string, 'data_type': string, 'erratas': array<string, mixed>, 'is_nullable': bool|null, 'numeric_precision': int|null|string, 'numeric_scale': int|null|string, 'numeric_unsigned': bool|null, 'ordinal_position': int|null|string}>>>, 'constraint_keys'?: array<string, list<array{'column_name': string, 'constraint_name': string, 'ordinal_position': int, 'table_name': string}>>, 'constraint_references'?: array<string, list<array{'constraint_name': string, 'delete_rule': string, 'referenced_column_name': string, 'referenced_table_name': string, 'update_rule': string}>>, 'constraints'?: array<string, array<string, array<string, array{'check_clause'?: string, 'columns'?: list<string>, 'constraint_type'?: string, 'delete_rule'?: string, 'match_option'?: string, 'referenced_columns'?: list<string>, 'referenced_table_name'?: string, 'referenced_table_schema'?: string, 'update_rule'?: string}>>>, 'schemas'?: list<string>, 'table_names'?: array<string, array<string, array{'check_option'?: null|string, 'is_updatable'?: bool|null, 'table_type': string, 'view_definition'?: null|string}>>, 'triggers'?: array<string, array<string, array{'action_condition': null|string, 'action_order': string, 'action_orientation': string, 'action_reference_new_row': string, 'action_reference_new_table': null|string, 'action_reference_old_row': string, 'action_reference_old_table': null|string, 'action_statement': string, 'action_timing': string, 'created': DateTime|null, 'event_manipulation': string, 'event_object_catalog': string, 'event_object_schema': string, 'event_object_table': string}>>})."
+count = 1
 
 [[issues]]
 file = "src/Pdo/Connection.php"
