@@ -13,7 +13,6 @@ use PhpDb\ResultSet;
 use function array_change_key_case;
 use function array_walk;
 use function implode;
-use function is_array;
 use function is_string;
 use function key;
 
@@ -382,22 +381,14 @@ class Source extends AbstractSource
             'action_condition',
             'action_statement',
             'action_orientation',
-            ['action_timing' => 'condition_timing'],
-            ['action_reference_old_table' => 'condition_reference_old_table'],
-            ['action_reference_new_table' => 'condition_reference_new_table'],
+            'action_timing',
+            'action_reference_old_table',
+            'action_reference_new_table',
             'created',
         ];
 
         array_walk($isColumns, static function (&$c) use ($p) {
-            if (is_array($c)) {
-                $alias = key($c);
-                $c     = $p->quoteIdentifierChain($c);
-                if (is_string($alias)) {
-                    $c .= " {$p->quoteIdentifier($alias)}";
-                }
-            } else {
-                $c = $p->quoteIdentifier($c);
-            }
+            $c = $p->quoteIdentifier($c);
         });
 
         $sql =

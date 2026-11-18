@@ -43,7 +43,7 @@ final class PdoConnectionInterfaceFactory
         if (null === $connectionInfo || ! is_array($connectionInfo) || [] === $connectionInfo) {
             throw new InvalidConnectionParametersException(
                 'Connection configuration must be an array of parameters',
-                $connectionInfo,
+                is_array($connectionInfo) ? $connectionInfo : [],
             );
         }
         return new Pdo\Connection($connectionInfo);
